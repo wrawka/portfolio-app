@@ -13,6 +13,16 @@
     <br>
     <h5>Technology used:</h5>
     <p>{{ project.technology }}</p>
+    {% if project.link %}
+    <br>
+    <h5>Link:</h5>
+    <a href="{{ project.link }}"><p>{{ project.link }}</p></a>
+    {% endif %}
+    {% if project.source %}
+    <br>
+    <h5>Soure code:</h5>
+    <a href="{{ project.source }}"><p>{{ project.source }}</p></a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
