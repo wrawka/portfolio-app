@@ -10,7 +10,9 @@ SECRET_KEY = env.get('SECRET_KEY') or 'wow_so_secret'
 
 DEBUG = env.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = env.get('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = env.get('ALLOWED_HOSTS', '*').split(',')
+
+CSRF_TRUSTED_ORIGINS = env.get('CSRF_TRUSTED_ORIGINS', '').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
