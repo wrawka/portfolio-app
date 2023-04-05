@@ -1,12 +1,16 @@
 from pathlib import Path
+from dotenv import load_dotenv
+from os import environ as env
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-^v0x^z#5&$6@5lxv^=*k%apr^a)ffl6vq8*oxqrjlk4n-=r1wp'
+SECRET_KEY = env.get('SECRET_KEY') or 'wow_so_secret'
 
-DEBUG = True
+DEBUG = env.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.get('ALLOWED_HOSTS').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -52,8 +56,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': env.get('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': env.get('DB_NAME', BASE_DIR / 'db.sqlite3'),
+        'USER': env.get('DB_USER', 'postgres'),
+        'PASSWORD': env.get('DB_PASSWORD', 'postgres'),
+        'HOST': env.get('DB_HOST', '127.0.0.1'),
+        'PORT': env.get('DB_PORT', 5432),
     }
 }
 
