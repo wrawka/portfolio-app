@@ -14,26 +14,23 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-info flex-lg-nowrap">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark flex-lg-nowrap">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'projects_index' %}"><i class="fa-solid fa-house"></i>&nbsp;RP Portfolio</a>
+          <a class="navbar-brand text-white" href="#"><i class="fa-solid fa-dumpster-fire"></i>&nbsp;The Portfolio Site</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="{% url 'projects_index' %}">Home</a>
+                <a class="nav-link text-white" href="{% url 'projects_index' %}"><i class="fa-solid fa-laptop-file"></i>&nbsp;My Projects</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
+                <a class="nav-link text-white" href="/blog"><i class="fa-solid fa-newspaper"></i>&nbsp;Blog</a>
               </li>
             </ul>
           </div>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <a class="btn btn-warning float-end" href="/refresh" role="button"><i class="fas fa-sync-alt"></i></a>
-            <a class="btn btn-secondary float-end" href="/admin" role="button"><i class="fas fa-user-cog"></i></a>
-          </div>
+          <a class="btn btn-secondary float-end" href="/admin" role="button"><i class="fas fa-user-cog"></i></a>
         </div>
       </nav>
     </header>
