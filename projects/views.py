@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 
 from projects.models import Project
 
 
 def index(request):
-    return render(request, 'index.html', {})
+    # return render(request, 'index.html', {})
+    return redirect(project_index)
 
 
 def project_index(requset):
