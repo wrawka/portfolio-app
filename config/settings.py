@@ -10,9 +10,9 @@ SECRET_KEY = env.get('SECRET_KEY') or 'wow_so_secret'
 
 DEBUG = env.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = env.get('ALLOWED_HOSTS', '*').split(',')
+ENVIRONMENT = env.get('ENVIRONMENT')
 
-CSRF_TRUSTED_ORIGINS = env.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+ALLOWED_HOSTS = env.get('ALLOWED_HOSTS', '*').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -110,3 +110,25 @@ if DEBUG:
     INTERNAL_IPS = [
         "127.0.0.1",
     ]
+
+if ENVIRONMENT == 'prod':
+    CSRF_TRUSTED_ORIGINS = env.get('CSRF_TRUSTED_ORIGINS', 'http://localhost').split(',')
+
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        dsn="https://fed170e81b3341dc98cfb4a7bab26bee@o4504971180441600.ingest.sentry.io/4504971183390720",
+        integrations=[
+            DjangoIntegration(),
+        ],
+
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
