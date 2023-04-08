@@ -3,4 +3,5 @@ django-run:
 
 update-source:
 	git pull git@portfolio-app:wrawka/portfolio-app.git
-	sudo systemctl restart gunicorn
+	python manage.py migrate
+	sudo systemctl restart portfolio
