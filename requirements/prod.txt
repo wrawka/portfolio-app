@@ -1,2 +1,2 @@
 -r common.txt
-sentry-sdk==1.19.*
+sentry-sdk~=2.8.*
